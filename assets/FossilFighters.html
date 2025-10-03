@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NDS Emulator</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      overflow: hidden;
+    }
+    #game {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- The emulator will attach here -->
+  <div id="game"></div>
+
+  <script type="text/javascript">
+    // pick server here (1, 2, or 3)
+    var server = 1;
+    var romUrl = "";
+
+    if (server === 1) {
+      romUrl = "https://rawcdn.githack.com/Deformed-steve/Fossil-Fighters/78270b6af48f932c31661d778fe294c0f78f630a/Fossil%20Fighters%20(USA).zip";
+    } else if (server === 2) {
+      romUrl = "https://cdn.jsdelivr.net/gh/Deformed-steve/Fossil-Fighters/Fossil%20Fighters%20(USA).zip";
+    } else if (server === 3) {
+      romUrl = "https://raw.githubusercontent.com/Deformed-steve/Fossil-Fighters/main/Fossil%20Fighters%20(USA).zip";
+    }
+
+    // EmulatorJS configuration
+    EJS_player   = "#game";
+    EJS_core     = "nds";
+    EJS_gameUrl  = romUrl;
+    EJS_biosUrl  = ""; // DS doesn’t need a BIOS for EmulatorJS
+    EJS_pathtodata = "https://cdn.emulatorjs.org/latest/data/"; 
+  </script>
+  <script src="https://cdn.emulatorjs.org/latest/data/loader.js"></script>
+</body>
+</html>
